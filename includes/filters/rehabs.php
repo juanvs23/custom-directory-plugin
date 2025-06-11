@@ -1,0 +1,74 @@
+<?php
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+function sitemap_exclude_coltman_addic_clinic( $excluded, $post_type ) {
+    return $post_type == 'coltman_addic_clinic';
+}
+
+add_filter( 'wpseo_sitemap_exclude_post_type', 'sitemap_exclude_coltman_addic_clinic', 10, 2 );
+
+
+
+/**
+ * Add coltman_addic_clinic to sitemap.
+ */
+if(!function_exists('coltman_addic_clinic_add_sitemap_index')){
+    function coltman_addic_clinic_add_sitemap_index($sitemap_index) {
+        global $wpseo_sitemaps;
+        $sitemap_url = home_url("rehabs-sitemap.xml");
+        $sitemap_date = date(DATE_W3C);  # Current date and time in sitemap format.
+        $custom_sitemap = <<<SITEMAP_INDEX_ENTRY
+    <sitemap>
+        <loc>%s</loc>
+        <lastmod>%s</lastmod>
+    </sitemap>
+    SITEMAP_INDEX_ENTRY;
+        $sitemap_index .= sprintf($custom_sitemap, $sitemap_url, $sitemap_date);
+        return $sitemap_index;
+    }
+    add_filter("wpseo_sitemap_index", "coltman_addic_clinic_add_sitemap_index");
+
+}
+
+/**
+* Register CUSTOM_SITEMAP sitemap with Yoast
+*/
+if(!function_exists('coltman_addic_clinic_sitemap_register')){
+    function coltman_addic_clinic_sitemap_register() {
+        global $wpseo_sitemaps;
+        if (isset($wpseo_sitemaps) && !empty($wpseo_sitemaps)) {
+            $wpseo_sitemaps->register_sitemap("rehabs", "coltman_addic_clinic_sitemap_generate");
+        }
+    }
+    add_action("init", "coltman_addic_clinic_sitemap_register");
+}
+
+if(!function_exists('coltman_addic_clinic_sitemap_generate')){
+    /**
+ * Generate CUSTOM_SITEMAP sitemap XML body
+ */
+function coltman_addic_clinic_sitemap_generate() {
+        global $wpseo_sitemaps;
+        $data = get_posts(array('post_type' => 'coltman_addic_clinic', 'posts_per_page' => -1));  # Replace this with your own data source function
+        $urls = array();
+        foreach ($data as $item) {
+            $urls[]= $wpseo_sitemaps->renderer->sitemap_url(array(
+                "mod" => $item->date,  # <lastmod></lastmod>
+                "loc" => get_permalink($item->ID),  # <loc></loc>
+            ));
+        }
+        wp_reset_postdata();
+        $sitemap_body = <<<SITEMAP_BODY
+    <urlset
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd http://www.google.com/schemas/sitemap-image/1.1 http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd"
+        xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    %s
+    </urlset>
+    SITEMAP_BODY;
+        $sitemap = sprintf($sitemap_body, implode("\n", $urls));
+        $wpseo_sitemaps->set_sitemap($sitemap);
+    }
+}

@@ -1,0 +1,582 @@
+section#green-rehab-banner {
+    background: rgba(var(--secondary-green-color),var(--opacity-1));
+    margin-bottom: 60px;
+}
+.green-rehab-banner-content {
+    display: grid;
+    align-items: center;
+    gap: 25px;
+    grid-template-columns: repeat(2,1fr);
+    padding: 15px 0;
+}
+.green-rehab-banner-content h2{
+    color: rgba(var(--primary-green-color),var(--opacity-1));
+    font-size: var(--font-h3);
+    font-weight: var(--font-weight-bold);
+}
+.green-rehab-banner-content p{
+    color: rgba(var(--black-color),var(--opacity-1));
+    font-size: var(--font-base);
+    font-weight: var(--font-weight-regular);
+    margin-bottom: 0;
+}
+.green-rehab-banner-content .block-left {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    justify-content: flex-start;
+}
+.green-rehab-banner-content .image-block img{
+    aspect-ratio: 4/3;
+    border-radius:15px;
+    object-fit: cover;
+    overflow: hidden;
+    max-width: 126px;
+}
+.green-rehab-banner-content .block-right {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    justify-content: flex-end;
+}
+video.rehab-video {
+    max-width: 100%;
+    aspect-ratio: 1;
+    overflow: hidden;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 24px;
+}
+.gallery-button{
+    position:absolute;
+    top: 50%;
+    transition: 0.3s;
+    transform: translateY(-50%);
+    z-index: 99;
+    cursor: pointer;
+}
+.gallery-button svg {
+    height: 50px;
+    width: 50px;
+    fill: rgba(var(--primary-green-color),var(--opacity-1));
+    transition: 0.3s;
+}
+.gallery-button:hover svg {
+    height: 50px;
+    width: 50px;
+    fill: rgba(var(--secondary-green-color),var(--opacity-1));
+}
+.gallery-button-next{
+    right: 0;
+}
+.close-modal:hover{
+    background: rgba(var(--white-color),var(--opacity-1)) !important;
+}
+.gallery-button-prev{
+    left: 0;
+}
+.swiper-button-disabled{
+    opacity: 0 !important;
+}
+.galleries-sections {
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+}
+.info-cardd {
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
+    gap: 15px;
+}
+.rehab-info-content{
+    padding: 15px;
+    border: 1px solid rgba(var(--secondary-green-color),var(--opacity-1));
+    border-radius: 24px;
+    margin-bottom: 50px;
+    margin-top: 30px;
+}
+.galleries-sections .gallery-right,
+.galleries-sections .gallery-left{
+    max-width: 50%;
+    width: 50%;
+}
+.gallery-grid{
+    overflow: hidden;
+    position: relative;
+}
+.gallery-grid-container .rehab_lightbox img {
+    aspect-ratio: 4/3.8;
+    border-radius: 24px;
+    object-fit: cover;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.rehabs-buttons h3 {
+    font-size: var(--font-base);
+    margin-bottom: 15px;
+}
+.rehab-info-content .info-right {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+section#green-insurance {
+    background: rgba(var(--secondary-green-color),var(--opacity-1));
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+.shortcode-item .post-section {
+    padding-top: 0;
+}
+.insurances-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+article.insurance-item {
+    width: 23%;
+}
+
+.gallery-grid-container .rehab_lightbox:hover img {
+    filter:opacity(0.7);
+}
+.rehab-info-content .info-right {
+    margin-bottom: 34px;
+}
+.description-info p {
+    margin-bottom: 15px;
+}
+h2.green-title {
+    text-align: center;
+    color: rgba(var( --primary-green-color),var(--opacity-1));
+    font-size: var(--font-h3);
+}
+p.green-address {
+    text-align: center;
+    max-width: 790px;
+    margin: auto;
+    margin-top: 5px;
+}
+article.insurance-item{
+    position: relative;
+    cursor: pointer;
+}
+article.insurance-item.hidden{
+    display: none;
+}
+.flip-card {
+    background-color: transparent;
+    width: 100%;
+    height: 200px;
+   
+    perspective: 1000px; /* Remove this if you don't want the 3D effect */
+  }
+  .flip-card-front {
+    background-color: white;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    overflow: hidden;
+}
+  
+  /* This container is needed to position the front and back side */
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+  
+  /* Do an horizontal flip when you move the mouse over the flip box container */
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+  
+  /* Position the front and back side */
+  .flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+  }
+
+  
+  /* Style the back side */
+  .flip-card-back {
+    background-color: rgba(var( --primary-green-color),var(--opacity-1));
+    color: white;
+    transform: rotateY(180deg);
+    border-radius: 15px;
+    overflow: hidden;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+}
+.view-all-insurances {
+    padding-top: 50px;
+    text-align: center;
+}
+.view-all-insurances-btn{
+    background-color: rgba(var( --primary-green-color),var(--opacity-1));
+    color: rgba(var( --white-color),var(--opacity-1));
+    border-radius: 4px;
+    padding: 10px 30px;
+    transition: 0.3s;
+    font-weight: var(--font-weight-bold);
+    text-decoration: none;
+}
+section#level-care, section#condicions {
+    padding-top: 60px;
+
+}
+.scalar-a-b,
+.scalar-b-a {
+    display: flex;
+    flex-direction: column;
+    gap: 70px;
+}
+.description-info {
+    padding-bottom: 20px;
+}
+.bottom-info .price {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.content-block-ama-content {
+    position: relative;
+}
+.content-block-ama-content:after {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 20px;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(180deg, rgba(var(--white-color),0) 0%, rgba(var(--white-color),1) 100%);
+}
+.price-icon {
+    display: flex;
+    align-items: center;
+}
+.especiality-block {
+    display: flex;
+    gap: 2vw;
+    flex-direction: column;
+}
+section#espciality {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+.google-testimonial-item {
+    padding: 10px 0;
+}
+.conditions-container h2.parent-title{
+    padding-bottom: 10px;
+    text-align: left !important;
+}
+.conditions-container {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+.parent-condition {
+    padding-bottom: 40px;
+}
+.google-testimonial-content {
+    padding: 48px 15px;
+    background: #E8F6E3;
+    border-radius: 0 0 24px 24px;
+}
+.google-testimonial-haeder {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 24px;
+    border-radius: 24px 24px 0 0;
+    border: 1px solid #CACACA;
+    border-bottom: none;
+    align-items: center;
+}
+.google-testimonial-haeder  h3.reviews-title{
+    color: rgba(var(--primary-green-color), var(--opacity-1));
+    font-size: 24px;
+    font-weight: var(--font-weight-bold);
+    line-height: 0.5;
+}
+.google-testimonial-content .swiper-wrapper {
+    align-items: center;
+}
+.google-testonial-rating {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    height: fit-content;
+}
+.google-testimonals-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top:30px;
+}
+.google-testimonals-pagination span.swiper-pagination-bullet{
+    background: transparent;
+    opacity: 1;
+    height: 10px;
+    width: 10px;
+    border: 1px solid rgba(var(--primary-green-color), var(--opacity-1));
+}
+.google-testimonals-pagination span.swiper-pagination-bullet.swiper-pagination-bullet-active{
+    background: rgba(var(--primary-green-color), var(--opacity-1));
+}
+.google-iso {
+    display: flex;
+}
+.google-testimonial-title {
+    padding-bottom: 24px;
+}
+.google-testimonial-item-author {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.google-testimonial-item-author-image img {
+    width: 50px;
+    height: 50px;
+}
+h3.google-testimonial-item-author-name {
+    font-size: 25px;
+    display: flex;
+    align-items: center;
+    line-height: 1;
+    color: rgba(var(--primary-green-color), var(--opacity-1));
+}
+.google-testimonial-wrapper {
+    display: block;
+    overflow: hidden;
+    margin: auto;
+    max-width: 900px;
+}
+.testimonial-pre-testimonial, .google-post-testimonial {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.google-rating-count,
+.google-rating-text,
+.google-star {
+    display: flex;
+    align-items: center;
+}
+.google-rating-count{
+    color: #CACACA;
+}
+.google-testimonial-logo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    height: fit-content;
+    width: fit-content;
+}
+.google-testimonial-title h2,
+h2.google-title,
+h2.professional-title,
+.conditions-container h2.parent-title,
+h2.speciality-title,
+h2.level-title {
+    text-align: center;
+    color: rgba(var(--primary-green-color), var(--opacity-1));
+    font-size: var(--font-h3);
+}
+h2.google-title{
+    text-align: left !important;
+    font-size: var(--font-h4);
+}
+.google-map-container {
+    display: grid;
+    grid-template-columns: 60% auto;
+    align-items: center;
+    gap: 20px;
+}
+.rehab-info .middle-info {
+    justify-content: flex-start;
+    gap: 25px;
+}
+.view-all-insurances-btn:hover,a.view-all-insurances-btn:focus{
+    background-color: rgba(var( --white-color),var(--opacity-1));
+    color: rgba(var( --primary-green-color),var(--opacity-1));
+}
+.flip-card-text{
+    font-size: calc(var(--font-base) - 4px);
+}
+.flip-card-back a{
+    color:rgba(var( --secondary-green-color),var(--opacity-1));
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: calc(var(--font-base) - 4px);
+}
+.flip-card-back a:hover{
+    color:rgba(var( --white-color),var(--opacity-1));
+}
+.flip-card-back h3 {
+    font-size: calc(var(--font-h4) - 4px);
+    color: white;
+}
+.google-map iframe {
+    max-height: 350px;
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    border: none;
+}
+section#google-map-section {
+    padding-bottom: 60px;
+    padding-top: 60px;
+}
+.google-map-container {
+    display: grid;
+    grid-template-columns: 60% auto;
+    align-items: center;
+    gap: 20px;
+}
+
+.ads-carousel{
+    overflow: hidden;
+}
+.ads-slider article.rehab-card{
+    margin:0;
+    max-width: 100%;
+}
+.swiper-slide.swiper-slide-active{
+    box-sizing: content-box;
+}
+@media(max-width: 767px) {
+    .google-map-container {
+        display: grid;
+        grid-template-columns: 100%;
+        align-items: center;
+        gap: 20px;
+    }
+    .google-testimonial-logo {
+        flex-direction: column;
+        gap: 0;
+    }
+    .rehab-info  p.green-address {
+        text-align: left;
+    }
+    .rehab-info  h2.green-title.left-title {
+        font-size: 25px;
+    }
+    .green-rehab-banner-content .image-block img {
+        aspect-ratio: 1;
+        border-radius: 15px;
+        object-fit: cover;
+        overflow: hidden;
+        
+    }
+    .single-image-gallery .rehab_image_image img{
+        aspect-ratio: 1;
+    }
+    .reha-info-buttons {
+        flex-flow: column;
+        gap: 5px;
+        align-items: stretch;
+    }
+    article.insurance-item {
+        width: 100%;
+    }
+    .galleries-sections .gallery-right,
+.galleries-sections .gallery-left{
+    max-width: 100%;
+    width: 100%;
+}
+    .galleries-sections {
+       
+        flex-direction: column;
+        gap: 25px;
+    }
+    .reha-info-buttons {
+        display: flex;
+        gap: 13px !important;
+        align-items: stretch !important;
+    }
+}
+.speciality-image {
+    width: 100%;
+    flex: 100%;
+    min-width: 100%;
+    overflow: hidden;
+    border-radius: 24px;
+}
+.speciality-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 15px;
+}
+#rehab-gallery{
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+@media(min-width: 768px){
+    article.insurance-item {
+        width: 48%;
+    }
+    .speciality-image {
+        width: 100%;
+        flex: 50%;
+        min-width: 50%;
+    }
+    .especiality-block {
+        flex-direction: row;
+    }
+    .scalar-b-a .especiality-block:nth-child(odd) {
+        flex-direction: row-reverse;
+    }
+}
+
+@media(min-width: 992px) {
+    article.insurance-item {
+        width: 30%;
+    }
+    .info-cardd {
+        grid-template-columns: repeat(2,1fr);
+    }
+    .rehab-info-content{
+        padding: 24px;
+    }
+    .rehab-info-content .info-right {
+   
+        margin-bottom: 0px;
+     }
+}
+@media (max-width: 1199px) {
+   
+    .green-rehab-banner-content .block-right,
+    .green-rehab-banner-content .block-left {
+        
+        justify-content:center;
+    }
+    .green-rehab-banner-content {
+        grid-template-columns: repeat(1,1fr);
+    }
+}
+@media (min-width: 1200px){
+
+    article.insurance-item {
+        width: 23%;
+    }
+
+}

@@ -1,0 +1,35 @@
+{
+    "name": "coltman/addic-clinic-directory",
+    "description": "Addic Clinic Directory",
+    "type": "project",
+    "license": "gnu",
+    "autoload": {
+        "psr-4": {
+            "Coltman\\AddicClinicDirectory\\": "includes/"
+        }
+
+    },
+    "config": {
+        "preferred-install": "dist",
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "version": "1.0.0",
+    "authors": [
+        {
+            "name": "Juan Carlos Avila",
+            "email": "juanvs23@gmail.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^7.9",
+        "symfony/dom-crawler": "^7.1",
+        "symfony/css-selector": "^7.1",
+        "phpoffice/phpspreadsheet": "^4.0",
+        "athlon1600/youtube-downloader": "^4.0",
+        "openai-php/client": "^0.10.3"
+    }
+}
