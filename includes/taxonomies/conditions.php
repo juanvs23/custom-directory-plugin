@@ -24,7 +24,7 @@ if ( class_exists('ColtmanRegisterTaxonomy') && ! function_exists( 'coltman_add_
             [
                 'slug' => __( 'conditions', 'addic-clinic-directory' ),
                 'with_front' => true,
-                'hierarchical' => false,
+                'hierarchical' => true,
                 
             ]
         );
