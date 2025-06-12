@@ -37,7 +37,7 @@ set_time_limit(3000);
 
 if(!defined('ADDIC_CLINIC_PLUGIN_DIR')) define('ADDIC_CLINIC_PLUGIN_DIR', __DIR__);
 if(!defined('ADDIC_CLINIC_PLUGIN_URL')) define('ADDIC_CLINIC_PLUGIN_URL', plugin_dir_url(__FILE__));
-if(!defined('ADDIC_CLINIC_VERSION')) define('ADDIC_CLINIC_VERSION', '1.2.4'); 
+if(!defined('ADDIC_CLINIC_VERSION')) define('ADDIC_CLINIC_VERSION', '1.2.5'); 
 
 // Add templates folders
 $theme_folder = trailingslashit( get_stylesheet_directory() ).'addic-clinic-directory/';
