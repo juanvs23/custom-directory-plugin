@@ -5,11 +5,9 @@ $post_category = get_query_var('post_category')?get_query_var('post_category'):'
     <div class="clinic-container clinic-content">
         <div class="related-posts-title-content">
             <h2 class="clinic-posts-title">
-                <?php echo _x('Related Posts','addic-clinic-directory'); ?>
+                <?php echo _x('Addiciton Resources','addic-clinic-directory'); ?>
             </h2>
-            <p class="clinic-posts-description">
-                <?php echo _x('Check out some of our latest posts','addic-clinic-directory');?>
-            </p>
+
         </div>
         <div class="clinic-posts"  itemscope itemtype="https://schema.org/CollectionPage">
             <?php

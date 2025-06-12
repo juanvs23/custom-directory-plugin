@@ -1533,6 +1533,7 @@ li.filter-item .filter-link.active{
 }
 h2.clinic-posts-title {
     color: rgba(var(--primary-green-color),1);
+    margin-bottom: 24px;;
 }
 h3.title-new-post {
     font-size: 24px;
@@ -1941,6 +1942,11 @@ button.acordeon-item-button {
 .acordeon-seo-wraper {
     max-width: 985px;
     margin: auto;
+}
+
+.acordeon-seo-content .acordeon-item-content p{
+    margin: 0px;
+padding-top : 10px;
 }
 @media(max-width: 1024px){
    

@@ -5,7 +5,7 @@
  * 
  * @package ColtmanAddicClinic
  * 
- * @version 1.2.4
+ * @version 1.2.5
  * @author Juan Carlos Avila
  * @link http://www.addicclinic.com
  * @copyright Copyright (c) 2024 Addic Clinic
@@ -16,7 +16,7 @@
  * Description: Addic Clinic Directory
  * Requires at least: 5.2
  * Requires PHP: 8.1
- * Version: 1.2.4
+ * Version: 1.2.5
  * Author: Juan Carlos Avila
  * Author URI: http://www.addicclinic.com
  * License: GPLv2 or later
