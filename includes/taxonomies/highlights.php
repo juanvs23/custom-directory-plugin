@@ -22,7 +22,11 @@ if ( class_exists( 'ColtmanRegisterTaxonomy' ) && ! function_exists( 'coltman_ad
             [
                 'coltman_addic_clinic'
             ],
-           false
+            [
+                'slug' => __( 'highlights', 'addic-clinic-directory' ),
+                'with_front' => true,
+                'hierarchical' => true,
+            ]
         );
     }
 }

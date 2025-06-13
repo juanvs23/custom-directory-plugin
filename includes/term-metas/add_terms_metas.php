@@ -24,7 +24,7 @@ if (class_exists('ColtmanTermMeta') ) {
                     'content_blocks_ama' => [
                     'label' => 'Content Blocks',
                     'type' => 'accordion',
-                    'add_image' => 'false',
+                    'add_image' => 'true',
                     'default' => '',
                         'description' => 'Add ours blocks sections here: <br> Add <b>Block Title = title</b>, <b>Block Content = content</b>'
                     ],
