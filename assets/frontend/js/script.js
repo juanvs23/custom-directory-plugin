@@ -577,11 +577,14 @@ document.addEventListener('DOMContentLoaded', function () {
     if(document.querySelectorAll('.ads-slider')){
         const adsSlider = new Swiper('.ads-slider', {
             slidesPerView: 1,
-            speed: 500,
+            speed: 2500,
             spaceBetween: 10,
             loop: true,
+			 freeMode: true,
+            centerInsufficientSlides: true,
+            createElements: true,
             autoplay: {
-                delay: 2500,
+                delay: 5000,
             },
           //  virtual: true,
      

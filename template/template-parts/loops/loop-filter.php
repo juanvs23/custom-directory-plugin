@@ -92,26 +92,3 @@ $total = $rehab_content['total'];
         </div>
     </main>
 </div>
-<?php
- $content_blocks_ama = isset($rehab_content['content_blocks_ama'])? json_decode($rehab_content['content_blocks_ama']) : json_decode(json_encode([]));
-set_query_var('content_blocks_list', $content_blocks_ama);
-echo coltman_get_template_slug_part('components/content','blocks'); 
-if(is_iterable(json_decode($rehab_content['faq_accordeon'])) && count(json_decode($rehab_content['faq_accordeon'])) > 0):
-?>
-<section class="clinic-section faq-green ">
-    <div class="clinic-container">
-    <?php
-
-$faq_accordeon = isset($rehab_content['faq_accordeon'])? json_decode($rehab_content['faq_accordeon']):json_decode(json_encode([]));
-set_query_var('faq_list', $faq_accordeon);
-echo coltman_get_template_slug_part('components/section','faq');
-//wp_reset_postdata(  );
-?>
-        
-    </div>
-</section>
-
-<?php endif;
-//  echo coltman_get_template_slug_part('components/ads','carousel');
-
-?>

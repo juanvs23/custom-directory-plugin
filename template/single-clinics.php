@@ -176,25 +176,8 @@ echo '</section>';
       };
   }
   if( count($get_level_care) > 0 ){
-?>
-<section id="level-care" class="level-care section-container">
-    <div class="clinic-container">
-
-        <div class="level-care-container">
-            <h2 class="level-title">Level Of Care</h2>
-            <?php
-            
-            if( count($get_level_care) > 0 ){
-                set_query_var('level_care', $get_level_care);
-                echo coltman_get_template_slug_part('components/level_of_care');
-            }
-            
-            ?>
-        </div>
-    </div>
-</section>
-
-<?php
+    set_query_var('level_care', ['get_level_care' => $get_level_care, 'level_title'=>'Level Of Care', 'level_text'=>'']);
+    echo coltman_get_template_slug_part('components/tab','level_care');
   }
 
  /**
@@ -219,15 +202,10 @@ echo '</section>';
  * Especialities section
  */
 if($rehab_highlight_blocks):
+     set_query_var('especialities_list', $rehab_highlight_blocks );
+       echo coltman_get_template_slug_part('components/especialities');
 ?>
-<section id="espciality" class="section-container">
-    <div class="clinic-container">
-        <?php
-        set_query_var('especialities_list', $rehab_highlight_blocks );
-        echo coltman_get_template_slug_part('components/especialities');
-        ?>
-    </div>
-</section>
+
 <?php
 /*
 * Ads rehab premium  carousel (free) 

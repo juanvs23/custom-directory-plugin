@@ -7,7 +7,7 @@ $args = [
     'post_status' => 'publish',
     'posts_per_page' => -1,
     'post__not_in' => [$get_id],
-    'orderby' => 'rand',
+    'orderby' => 'date',
     'order' => 'ASC',
     'tax_query' => [
         [

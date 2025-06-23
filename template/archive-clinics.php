@@ -24,10 +24,27 @@ set_query_var('have_category','true');
 echo  coltman_get_template_slug_part('components/ads','slider');
 
 echo  coltman_get_template_slug_part('loops/loop','filter');
+
+
+$content_blocks_ama = isset($content_blocks)? json_decode($content_blocks) : json_decode(json_encode([]));
+set_query_var('content_blocks_list', $content_blocks_ama);
+echo coltman_get_template_slug_part('components/content','blocks');
+if(is_iterable(json_decode($faqs_items)) && count(json_decode($faqs_items)) > 0):
 ?>
+<section class="clinic-section faq-green ">
+    <div class="clinic-container">
+    <?php
 
+$faq_accordeon = isset($faqs_items)? json_decode($faqs_items):json_decode(json_encode([]));
+set_query_var('faq_list', $faq_accordeon);
+echo coltman_get_template_slug_part('components/section','faq');
+//wp_reset_postdata(  );
+?>
+        
+    </div>
+</section>
 
-<?php
+<?php endif;
 echo '<div class="ads-container-carousel">';
 echo coltman_get_template_slug_part('components/ads','carousel');
 echo '</div>';
@@ -35,9 +52,7 @@ echo '</div>';
 echo coltman_get_template_slug_part('loops/related','posts'); 
 echo '<section class="clinic-section">';
 echo '<div class="clinic-container">';
-echo do_shortcode('[addic_filters_tab]');
+echo do_shortcode('[addic_filters_tab current_filter="'.$taxonomy.'"]');
 echo '</div>';
 echo '</section>';
 get_footer();
-
-

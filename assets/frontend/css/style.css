@@ -79,6 +79,7 @@ form.addic_ajax_form {
     border-radius: 5px;
     /* min-width: 30vw; */
     margin-bottom: 0;
+    background-color: #fff;
 }
 .form_content {
     display: flex;
@@ -937,9 +938,15 @@ h3.title {
     color: rgba(var(--primary-green-color),1);
     user-select: none;
 }
+h2.speciality-title,
 .faq-container h2.faq-title{
     font-size: var(--font-h3);
     color: rgba(var(--primary-green-color),1);
+}
+.scalar-a-b, .scalar-b-a {
+    display: flex;
+    flex-direction: column;
+    gap: 70px;
 }
 .faq-container {
     display: grid;
@@ -1013,6 +1020,59 @@ article.rehab-card.rehab-hidden {
     margin-bottom: 5px;
     font-weight: 600;
 }
+.content-block-ama-content {
+    position: relative;
+}
+.content-block-ama-content:after {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 20px;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(180deg, rgba(var(--white-color),0) 0%, rgba(var(--white-color),1) 100%);
+}
+.price-icon {
+    display: flex;
+    align-items: center;
+}
+.especiality-block {
+    display: flex;
+    gap: 2vw;
+    flex-direction: column;
+}
+.speciality-image {
+    width: 100%;
+    flex: 100%;
+    min-width: 100%;
+    overflow: hidden;
+    border-radius: 24px;
+}
+.speciality-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 15px;
+}
+section.espciality {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+.google-testimonial-item {
+    padding: 10px 0;
+}
+.conditions-container h2.parent-title{
+    padding-bottom: 10px;
+    text-align: left !important;
+}
+.conditions-container {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+.parent-condition {
+    padding-bottom: 40px;
+}
 .info-toolip p{
     font-size: 13px;
     margin-bottom: 0;
@@ -1066,7 +1126,17 @@ h3.acordeon-item-title button.acordeon-item-button,
 .faq-item.open .faq-item-content {
     display: block;
 }
-
+p.level-text {
+    text-align: center;
+    max-width: 800px;
+    margin: auto;
+    margin-bottom: 50px;
+}
+ h2.level-title {
+    text-align: center;
+    color: rgba(var(--primary-green-color), var(--opacity-1));
+    font-size: var(--font-h3);
+}
 .faq-arrow {
     transition: 0.5s;
 }
@@ -1273,7 +1343,7 @@ ul.tab-navs {
     text-align: unset;
     color: var(--52776C, #52776C);
     font-family: "DM Sans";
-    font-size: var(--font-h4);
+    font-size: 24px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
@@ -1948,6 +2018,27 @@ button.acordeon-item-button {
     margin: 0px;
 padding-top : 10px;
 }
+
+#main-home div.addic_ajax_filter .form_content{
+    padding: 5px;
+}
+    
+@media(min-width: 768px){
+    article.insurance-item {
+        width: 48%;
+    }
+    .speciality-image {
+        width: 100%;
+        flex: 50%;
+        min-width: 50%;
+    }
+    .especiality-block {
+        flex-direction: row;
+    }
+    .scalar-b-a .especiality-block:nth-child(odd) {
+        flex-direction: row-reverse;
+    }
+}
 @media(max-width: 1024px){
    
 }
@@ -1959,6 +2050,11 @@ padding-top : 10px;
     }
 }
 @media(max-width: 767px){
+
+    #main-home div.addic_ajax_filter{
+        padding: 15px !important;
+         }
+        
    .hot-topic-next {
     right: -11px;
 }

@@ -1,11 +1,11 @@
 <?php
-//$get_id = get_query_var('get_id');
+$get_id = get_query_var('get_id');
 $args = [
     'post_type' => 'coltman_addic_clinic',
     'post_status' => 'publish',
     'posts_per_page' => -1,
-    //'post__not_in' => [$get_id],
-    'orderby' => 'title',
+    'post__not_in' => [$get_id],
+    'orderby' => 'date',
     'order' => 'ASC',
     'meta_key' => 'show_on_slider_ads',
     'meta_value' => 'on',
