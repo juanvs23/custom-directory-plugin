@@ -1,6 +1,7 @@
 <?php 
 $rehab_content = get_query_var('rehab_content');
 $total = $rehab_content['total'];
+$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 ?>
 <div class="clinic-section">
     <main id="rehabs-content" class="archive-rehab clinic-container">
@@ -12,7 +13,7 @@ $total = $rehab_content['total'];
             set_query_var('filter_info',['total' =>$total. ' Rehab Centers in "'. get_queried_object()->name.'"','title'=>$rehab_content['title'] , 'localize'=> get_queried_object()->term_id ]);
             echo  coltman_get_template_slug_part('components/rehab','filter');?>
         </section>
-      
+       
         <div class="rehabs-list-wraper">
           
            
@@ -23,6 +24,7 @@ $total = $rehab_content['total'];
                     'post_type' => 'coltman_addic_clinic',
                     'orderby' => 'title',
                     'order' => 'ASC',
+                    'paged'          => $paged,
                     'tax_query' =>[
                         [
                             'taxonomy' => get_queried_object()->taxonomy,
@@ -36,6 +38,7 @@ $total = $rehab_content['total'];
                     'publish_status' => 'publish',
                     'post_type' => 'coltman_addic_clinic',
                     'orderby' => 'title',
+                    'paged'          => $paged,
                     'order' => 'ASC',
                  ];
                  
@@ -46,7 +49,6 @@ $total = $rehab_content['total'];
                 if(count($query)>0 ){
                     echo '<section class="rehab-list">';
                     foreach($query as $post) {
-                       
                         set_query_var('card_info', [ 'post'=>get_post(get_the_ID($post->ID)),'have_category'=>'true', 'have_gallery'=>'false','words'=>25,'limit'=>3,'have_button'=>false]);
                         echo coltman_get_template_slug_part('components/rehab','card'); 
                     }
@@ -80,7 +82,7 @@ $total = $rehab_content['total'];
                 <button class="load-more-rehab" 
                     data-offset="<?php echo  get_option('posts_per_page') ?>" 
                     data-addcards="<?php echo  get_option('posts_per_page') ?>"  
-                    data-currentpaged="" 
+                    data-currentpaged="<?php echo $paged;?>" 
                     data-tax_filter="[]" 
                     data-tax="<?php echo get_queried_object()->taxonomy;?>" 
                     data-term="<?php echo get_queried_object()->term_id;?>"

@@ -8,7 +8,7 @@ $args = [
     'posts_per_page' => -1,
     'post__not_in' => [$get_id],
     'orderby' => 'date',
-    'order' => 'ASC',
+    'order' => 'DESC',
     'tax_query' => [
         [
             'taxonomy' => 'coltman_type_membership',

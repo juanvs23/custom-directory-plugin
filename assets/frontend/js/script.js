@@ -815,6 +815,33 @@ if(ajaxSeekers){
         const ajaxNonce = ajaxSeeker.querySelector('input[name="nonce"]');
         const url = addic_clinic_ajax.ajax_url;
         let abortController;
+        ajaxInput.addEventListener('focus', function(e){
+            if(!result.parentNode.classList.contains('active')){
+                result.parentNode.classList.add('active');
+            }
+        })
+        document.addEventListener('click', function(e){
+            console.log('close click');
+            if (e.target !== ajaxSeeker && !ajaxSeeker.contains(e.target)) {
+                // Clicked outside the input, hide the result
+                if(result.parentNode.classList.contains('active')){
+                    result.parentNode.classList.remove('active');
+                }
+                
+            }
+        })
+
+        document.addEventListener('keydown', function(e){
+            console.log('close keydown');
+            if(e.key === 'Escape'){
+                if(result.parentNode.classList.contains('active')){
+                    result.parentNode.classList.remove('active');
+                }
+                ajaxInput.blur();
+            }
+        })
+      
+
         ajaxForm.addEventListener('submit', function(e){
             e.preventDefault();
         });
@@ -824,7 +851,7 @@ if(ajaxSeekers){
 
 
             
-            if(e.target.value.length > 2){
+            if(e.target.value.length > 1 && e.target.value !=' '){
                 addic_ajax_formLoader.classList.add('active');
                 const formData = new FormData();
                 formData.append('action', ajaxAction.value);
@@ -844,13 +871,11 @@ if(ajaxSeekers){
 
                     //console.log(resultData);
                     result.innerHTML = resultData.data;
-                    result.parentNode.classList.add('active');
+                    //console.log(resultData.data);
                   //  result.innerHTML = ;
                 }catch(error){
-
+                    console.log(error);
                 }
-            }else{
-                result.parentNode.classList.remove('active');
             }
         })
 

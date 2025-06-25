@@ -21,50 +21,52 @@ if(!function_exists('addic_ajax_filter_fn')){
             </form>
             <div class="addic_ajax_result">
                 <div class="addic_ajax_content">
-                   <!--  <div class="addic_ajax_items">
-                        <div class="addic_ajax_item">
-                           <a href="#" class="ajax_link_item">
-                           <div class="addic_ajax_image">
-                            <img decoding="async" src="https://amatesting.uk/directorio/wp-content/uploads/2024/11/los-angeles-scaled.webp" alt="Burbank Memorial" loading="lazy" async="">
-                            </div>
-                            <div class="addic_ajax_content">
-                                <h2 class="addic_ajax_title">
-                                    Lorem Ipsum testeaasd ress
-                                </h2>
-                                <p class="addic_ajax_description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, ullam reprehenderit saepe iure assumenda quasi magnam obcaecati suscipit?</p>
-                            </div>
-    
-                           </a>
+                    <div class="addic_ajax_section">
+                        <h2 class="addic_ajax_title">Top Rehabs</h2>
+                        <div class="addic_ajax_items">
+                            <?php
+                            //var_dump(ADDIC_CLINIC_REHABS);
+                            $args = [
+                                        'post_type' => 'coltman_addic_clinic',
+                                        'post_status' => 'publish',
+                                        'posts_per_page' => -1,
+                                        'orderby' => 'date',
+                                        'order' => 'DESC',
+                                        'tax_query' => [
+                                            [
+                                                'taxonomy' => 'coltman_type_membership',
+                                                'field' => 'slug',
+                                                'terms' => 'payment-membership'
+                                            ]
+                                        ]
+                                    ];
+                                    $get_rehab = get_posts($args);
+                            foreach ($get_rehab as $rehab_id){
+                                //var_dump($rehab_id);
+                                set_query_var('rehab_item',[
+                                    'link' => get_permalink($rehab_id->ID),
+                                    'title' => get_the_title($rehab_id->ID),
+                                    'image' => get_the_post_thumbnail_url($rehab_id->ID) ? get_the_post_thumbnail_url($rehab_id->ID) : ADDIC_CLINIC_PLUGIN_URL.'assets/frontend/image/single-default.webp',
+                                    'description' => get_post_meta($rehab_id->ID, 'rehab_description', true),
+                                    'rehab_id' => $rehab_id->ID
+                                ]);
+                                echo coltman_get_template_slug_part('components/rehab_ajax','item'); 
+                            }
+                            ?>
                         </div>
-                        <div class="addic_ajax_item">
-                           <a href="#" class="ajax_link_item">
-                           <div class="addic_ajax_image">
-                            <img decoding="async" src="https://amatesting.uk/directorio/wp-content/uploads/2024/11/los-angeles-scaled.webp" alt="Burbank Memorial" loading="lazy" async="">
-                            </div>
-                            <div class="addic_ajax_content">
-                                <h2 class="addic_ajax_title">
-                                    Lorem Ipsum testeaasd ress
-                                </h2>
-                                <p class="addic_ajax_description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, ullam reprehenderit saepe iure assumenda quasi magnam obcaecati suscipit?</p>
-                            </div>
-    
-                           </a>
-                        </div>
-                        <div class="addic_ajax_item">
-                           <a href="#" class="ajax_link_item">
-                           <div class="addic_ajax_image">
-                            <img decoding="async" src="https://amatesting.uk/directorio/wp-content/uploads/2024/11/los-angeles-scaled.webp" alt="Burbank Memorial" loading="lazy" async="">
-                            </div>
-                            <div class="addic_ajax_content">
-                                <h2 class="addic_ajax_title">
-                                    Lorem Ipsum testeaasd ress
-                                </h2>
-                                <p class="addic_ajax_description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, ullam reprehenderit saepe iure assumenda quasi magnam obcaecati suscipit?</p>
-                            </div>
-    
-                           </a>
-                        </div>
-                    </div> -->
+                    
+                </div>
+                <div class="addic_ajax_section">
+                    <h2 class="addic_ajax_title">Top Locations</h2>
+                    <div class="addic_filters">
+                        <?php foreach (ADDIC_CLINIC_LOCATIONS as $location): 
+                            echo getTermButtons($location);
+
+                            ?>
+                       
+                        <?php endforeach; ?>
+                    </div>
+                </div>
                 </div>
             </div>
         </div>
@@ -85,136 +87,13 @@ if(!function_exists('addic_ajax_filter_fn')){
             $html .='</div>'; 
             return wp_send_json_error( $html );
         }
-        $args = array(
-            'post_type' => 'coltman_addic_clinic',
-            'posts_per_page' => -1,
-            's' => $search
-        );
-        $primium_args = array(
-            'post_type' => 'coltman_addic_clinic',
-            'posts_per_page' => -1,
-            's' => $search,
-            'tax_query' => array(
-                array(
-                    'taxonomy' => 'coltman_luxuries',
-                    'field' => 'slug',
-                    'terms' => 'yes'
-                )
-            )
-        );
-        $posts = get_posts( $args );
-        $primium_posts = get_posts( $primium_args );
-        $post = array_merge($posts, $primium_posts);
-        if(count($posts) > 0){
-            $html .= '<div class="addic_ajax_section">';
-            $html .= '<h2 class="addic_ajax_title">'.__('Rehabs', 'addic-clinic-directory').'</h2>';
-            $html .= '<div class="addic_ajax_items">';
-            $count =  count($posts)<=5 ? count($posts) : 5;
-            for ($i=0; $i < count($posts); $i++) {
-                $post_id = $posts[$i]->ID;
-                $rehab_image_gallery = get_post_meta( $post_id, 'rehab_image_gallery', true );
-                $first_image = is_iterable(json_decode($rehab_image_gallery)) && $rehab_image_gallery !="[]" ? json_decode($rehab_image_gallery)[0]->url : ADDIC_CLINIC_PLUGIN_URL.'assets/frontend/image/single-default.webp'; 
-                $featured_image = get_the_post_thumbnail_url()?get_the_post_thumbnail_url():$first_image;
-                $rehab_description = get_post_meta( $post_id, 'rehab_description', true );
-
-                $html .= '<div class="addic_ajax_item">';
-                $html .= '<a href="'. get_permalink($posts[$i]->ID) .'" class="ajax_link_item">';
-                $html .= '<div class="addic_ajax_image">';
-                $html .= '<img decoding="async" src="'.$featured_image.'" alt="'.get_the_title($posts[$i]->ID).'" loading="lazy" async="">';
-                $html .= '</div>';
-                $html .= '<div class="addic_ajax_content">';
-                $html .= '<h2 class="addic_ajax_title">';
-                $html .= get_the_title($posts[$i]->ID);
-                $html .= '</h2>';
-                $html .= '<p class="addic_ajax_description">';
-                $html .= coltman_trim_by_chars_fn($rehab_description, 150);    
-                $html .= '</p>';
-                $html .= '</div>';
-                $html .= '</a>';
-                $html .= '</div>';
-            }
-            $html .='</div>';
-            $html .='</div>';
-        }
-        /**
-         * Get post by locations
-         */
-        $args = array(
-            'taxonomy'      =>'coltman_locations', // taxonomy name
-            'orderby'       => 'name', 
-            'order'         => 'ASC',
-            'hide_empty'    => true,
-            'fields'        => 'all',
-            'name__like'    => $search
-        ); 
-        $get_rehabs_by_locations = get_terms($args);
-
-        if(count($get_rehabs_by_locations) > 0){
-            $html .= '<div class="addic_ajax_section">';
-            $html .= '<h2 class="addic_ajax_title">'.__('Rehabs by locations', 'addic-clinic-directory').'</h2>';
-            foreach ($get_rehabs_by_locations as $rehabs_by_location) {
-                $html .= '<div class="addic_ajax_list" data-term_id="'. $rehabs_by_location->term_id .'">';
-                $html .= '<h2 class="addic_location_title">'. $rehabs_by_location->name .'</h2>';
-                $html .= '<div class="addic_ajax_items">';
-                $get_rehabs = get_posts(array(
-                    'post_type' => 'coltman_addic_clinic',
-                    'posts_per_page' => 5,
-                    'tax_query' => array(
-                        array(
-                            'taxonomy' => 'coltman_locations',
-                            'field' => 'term_id',
-                            'terms' => $rehabs_by_location->term_id
-                        )
-                    ) 
-                ));
-                if(count($get_rehabs) > 0){
-                    for ($i=0; $i < count($get_rehabs); $i++) {
-                        $post_id = $posts[$i]->ID;
-                        $rehab_image_gallery = get_post_meta( $post_id, 'rehab_image_gallery', true );
-                        $first_image = is_iterable(json_decode($rehab_image_gallery)) && $rehab_image_gallery !="[]" ? json_decode($rehab_image_gallery)[0]->url : ADDIC_CLINIC_PLUGIN_URL.'assets/frontend/image/single-default.webp'; 
-                        $featured_image = get_the_post_thumbnail_url()?get_the_post_thumbnail_url():$first_image;
-                        $rehab_description = get_post_meta( $post_id, 'rehab_description', true );
-                        $html .= '<div class="addic_ajax_item">';
-                        $html .= '<a href="'. get_permalink($get_rehabs[$i]->ID) .'" class="ajax_link_item">';
-                        $html .= '<div class="addic_ajax_image">';
-                        $html .= '<img decoding="async" src="'.$featured_image.'" alt="'.get_the_title($posts[$i]->ID).'" loading="lazy" async="">';
-                        $html .= '</div>';
-                        $html .= '<div class="addic_ajax_content">';
-                        $html .= '<h2 class="addic_ajax_title">';
-                        $html .= get_the_title($posts[$i]->ID);
-                        $html .= '</h2>';
-                        $html .= '<p class="addic_ajax_description">';
-                        $html .= coltman_trim_by_chars_fn($rehab_description, 150);    
-                        $html .= '</p>';
-                        $html .= '</div>';
-                        $html .= '</a>';
-                        $html .= '</div>';
-                    }
-                }
-                $html .='</div>';
-                $html .= '<a class="addic_ajax_load_more" href="'. get_term_link($rehabs_by_location->term_id, 'coltman_locations') .'">';
-                $html .= '<span>'.__('Load more', 'addic-clinic-directory').'</span>';
-                $html .= '</a>';
-                $html .='</div>';
-            }
-            $html .='</div>';
-        }
 
         
         /**
          * Filters
          */
         $location = display__filter_sections([ 'search' => $search, 'taxonomy' => 'coltman_locations', 'title' => 'Locations' ]);
-        $clientele =  display__filter_sections([ 'search' => $search, 'taxonomy' => 'coltman_clients', 'title' => 'Clientele' ] );
-        $coltman_treatments =  display__filter_sections([ 'search' => $search, 'taxonomy' => 'coltman_treatments', 'title' => 'Therapies' ]);
-        $coltman_amenities =  display__filter_sections([ 'search' => $search, 'taxonomy' => 'coltman_amenities', 'title' => 'Amenities' ]);
-        $coltman_conditions =  display__filter_sections([ 'search' => $search, 'taxonomy' => 'coltman_conditions', 'title' => 'Conditions' ]);
-        
         $html .=   $location;
-        $html .=   $clientele;
-        $html .=   $coltman_treatments;
-        $html .=   $coltman_amenities;
-        $html .=   $coltman_conditions;
     
 
         
@@ -245,6 +124,7 @@ if(!function_exists('addic_ajax_filter_fn')){
         ); 
         $locations = get_terms($args);
 
+        //var_dump($locations);
         if(count($locations) > 0){
             $html .= '<div class="addic_ajax_section">';
             $html .= '<h2 class="addic_ajax_title">'.__($title, 'addic-clinic-directory').'</h2>';
@@ -252,8 +132,9 @@ if(!function_exists('addic_ajax_filter_fn')){
             $count =  count($locations)<=5 ? count($locations) : 5;
 
             for ($i=0; $i < $count; $i++) {
+                $link =''; //get_term_link($locations[$i]->term_id, $taxonomy);
                 $html .= '<div class="addic_filter">';
-                $html .= '<a href="'. get_term_link($locations[$i]->term_id, $taxonomy) .'" class="ajax_link_filter">';
+                $html .= '<a href="'. $link .'" class="ajax_link_filter">';
                 $html .= '<div class="addic_filter_content">';
                 $html .= '<h3 class="addic_filter_title">';
                 $html .= $locations[$i]->name;

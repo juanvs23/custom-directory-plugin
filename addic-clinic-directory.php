@@ -5,7 +5,7 @@
  * 
  * @package ColtmanAddicClinic
  * 
- * @version 1.2.5
+ * @version 1.4.0
  * @author Juan Carlos Avila
  * @link http://www.addicclinic.com
  * @copyright Copyright (c) 2024 Addic Clinic
@@ -16,7 +16,7 @@
  * Description: Addic Clinic Directory
  * Requires at least: 5.2
  * Requires PHP: 8.1
- * Version: 1.2.5
+ * Version: 1.4.0
  * Author: Juan Carlos Avila
  * Author URI: http://www.addicclinic.com
  * License: GPLv2 or later
@@ -37,7 +37,7 @@ set_time_limit(3000);
 
 if(!defined('ADDIC_CLINIC_PLUGIN_DIR')) define('ADDIC_CLINIC_PLUGIN_DIR', __DIR__);
 if(!defined('ADDIC_CLINIC_PLUGIN_URL')) define('ADDIC_CLINIC_PLUGIN_URL', plugin_dir_url(__FILE__));
-if(!defined('ADDIC_CLINIC_VERSION')) define('ADDIC_CLINIC_VERSION', '1.2.5'); 
+if(!defined('ADDIC_CLINIC_VERSION')) define('ADDIC_CLINIC_VERSION', '1.4.0'); 
 
 // Add templates folders
 $theme_folder = trailingslashit( get_stylesheet_directory() ).'addic-clinic-directory/';
@@ -59,6 +59,37 @@ $clinis_filters = [
     'coltman_type_membership',
     'coltman_insurance_method',
 ];
+
+$main_locations = [
+    'Los Angeles',
+    'malibu',
+    'beverly hills',
+    'Long Beach',
+    'Santa Monica',
+    'Pasadena',
+    'Glendale',
+    'Santa Clarita',
+    'burbank',
+    'west Hollywood',
+    'woodland hills',
+    'tarzana',
+    'lancaster',
+    'Calabasas',
+    'studio city',
+    'Sherman Oaks',
+    'riverside',
+    'chatsworth',
+    'thousand oaks'
+];
+
+
+$main_rehabs = [
+    8212,7714,7607,7544,11141
+];
+
+if(!defined('ADDIC_CLINIC_LOCATIONS')) define('ADDIC_CLINIC_LOCATIONS', $main_locations);
+
+if(!defined('ADDIC_CLINIC_REHABS')) define('ADDIC_CLINIC_REHABS', $main_rehabs);
 
 if(!defined('ADDIC_CLINIC_FILTERS')) define('ADDIC_CLINIC_FILTERS', $clinis_filters);
 

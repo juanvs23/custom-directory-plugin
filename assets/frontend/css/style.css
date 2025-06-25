@@ -186,6 +186,13 @@ h3.addic_ajax_item_title {
     overflow: hidden;
     display: none;
     width: 100%;
+    z-index:9;
+}
+.addic_ajax_section{
+    margin-top: 30px;
+}
+.addic_ajax_section:first-of-type {
+    margin-top: 0;
 }
 .addic_ajax_content {
     overflow-y: auto;
@@ -222,6 +229,7 @@ a.ajax_link_filter:hover h3{
     display: flex;
     gap: 4px;
     flex-direction: row;
+    flex-wrap: wrap;
 }
 a.ajax_link_item:last-of-type a.ajax_link_item{
     border-bottom: none;
@@ -422,10 +430,12 @@ padding: 30px 0 30px 0;
     padding: 1px 13px;
     background: #ECC54E;
     display: flex;
-    justify-content: space-between;
-    gap: 15px;
+    justify-content: flex-end;
+    gap: 10px;
     border-radius: 4px;
     font-weight: 600;
+    align-items: center;
+    max-height: 30px;
 }
 .info-city address.info-city-name {
     margin-bottom: 0;
@@ -808,6 +818,9 @@ p.condition-description {
 }
 .rehab-card .rating-badget {
     background: transparent;
+    min-width: 140px;
+    max-width: 145px;
+    width: 145px;
 }
 .rehab-card .rating-badget svg path{
     fill: #ECC54E;
@@ -1292,8 +1305,9 @@ section#google-review-section {
     padding-top: 60px;
     padding-bottom: 60px;
 }
+
 .rating-badget .terms-lists-toolip {
-    left: -5%;
+    left: 27%;
     width: 140px;
     top: calc(100% + 7px);
 }

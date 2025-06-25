@@ -203,6 +203,7 @@ echo '</section>';
  */
 if($rehab_highlight_blocks):
      set_query_var('especialities_list', $rehab_highlight_blocks );
+    // var_dump($rehab_highlight_blocks);
        echo coltman_get_template_slug_part('components/especialities');
 ?>
 

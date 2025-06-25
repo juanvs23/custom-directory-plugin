@@ -13,8 +13,11 @@ $rehab_rating = get_post_meta( $post_id, 'rehab_rating', true );
 $rehab_verified = get_post_meta( $post_id, 'rehab_verified', true );
 $rehab_claimed = get_post_meta( $post_id, 'rehab_claimed', true );
 $rehab_description = get_post_meta( $post_id, 'rehab_description', true );
+$rehab_address = get_post_meta( $post_id, 'rehab_address', true );
+
 $rehab_city = get_post_meta( $post_id, 'rehab_city', true ) =='Not found'?'N/A':get_post_meta( $post_id, 'rehab_city', true );
 $rehab_state = get_post_meta( $post_id, 'rehab_state', true ) =='Not found'?'N/A':get_post_meta( $post_id, 'rehab_state', true );
+
 $rehab_phone = get_post_meta( $post_id, 'rehab_phone', true );
 $rehab_email = get_post_meta( $post_id, 'rehab_email', true );
 $rehab_website = get_post_meta( $post_id, 'rehab_website', true );
@@ -22,6 +25,9 @@ $rehab_website = get_post_meta( $post_id, 'rehab_website', true );
 $rehab_image_gallery = json_decode(get_post_meta( $post_id, 'rehab_image_gallery', true ));
 $have_button = $have_button!='false'?true:false;
 $first_image = is_iterable($rehab_image_gallery) && count($rehab_image_gallery)!=0? $rehab_image_gallery[0]->url : ADDIC_CLINIC_PLUGIN_URL.'assets/frontend/image/single-default.webp'; 
+
+
+$rehab_address = !empty($rehab_address) ?$rehab_address : $rehab_city . ', ' . $rehab_state;
 
 $image = get_the_post_thumbnail_url( $post->ID, 'full' )?get_the_post_thumbnail_url( $post->ID, 'full'):$first_image;
 ?>
@@ -69,7 +75,7 @@ $image = get_the_post_thumbnail_url( $post->ID, 'full' )?get_the_post_thumbnail_
                 <div class="top-info">
                     <div class="info-city">
                         <a href="<?php echo get_the_permalink(); ?>">
-                            <address class="info-city-name"><?php echo $rehab_city; ?>, <?php echo $rehab_state; ?></address>
+                            <address class="info-city-name"><?php echo $rehab_address; ?></address>
                         </a>
                     </div>
                     <?php

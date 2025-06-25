@@ -8,3 +8,4 @@ require __DIR__ . '/clientele.php';
 require __DIR__ . '/therapies.php';
 require __DIR__ . '/locations.php';
 require __DIR__ . '/validate_termlink.php';
+require __DIR__ . '/filter_order_by_page.php';

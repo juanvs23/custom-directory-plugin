@@ -1,5 +1,6 @@
 <?php
 $especialities_list = json_decode(get_query_var('especialities_list'));
+if(count($especialities_list)>0):
 ?>
 <section  class="espciality section-container">
     <div class="clinic-container">
@@ -18,3 +19,4 @@ $especialities_list = json_decode(get_query_var('especialities_list'));
         </div>
     </div>
 </section>
+<?php endif;?>

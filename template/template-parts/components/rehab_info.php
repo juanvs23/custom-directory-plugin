@@ -25,13 +25,14 @@ $rehab_address = $rehab_info['address'];
 $rehab_description = $rehab_info['description'];
 $rehab_city = $rehab_info['city'];
 $rehab_state = $rehab_info['state'];
+$rehab_address = !empty($rehab_address) ?$rehab_address : $rehab_city . ', ' . $rehab_state;
 ?>
 <div class="rehab-info-content">
     <div class="info-cardd">
         <div class="info-left">
             <div class="top-info">
                 <div class="info-city">
-                    <address class="info-city-name"><?php echo $rehab_city; ?>, <?php echo $rehab_state; ?></address>
+                    <address class="info-city-name"><?php echo $rehab_address; ?></address>
                 </div>
                 <?php
                 echo get_template_rating_badget($rehab_rating,get_permalink(get_the_ID()),'');

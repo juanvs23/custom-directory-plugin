@@ -24,6 +24,8 @@ if(!function_exists('coltman_get_rehab_card')){
           $rehab_phone = get_post_meta( $post_id, 'rehab_phone', true );
           $rehab_email = get_post_meta( $post_id, 'rehab_email', true );
           $rehab_website = get_post_meta( $post_id, 'rehab_website', true );
+          $rehab_address = get_post_meta( $post_id, 'rehab_address', true );
+          $rehab_address = !empty($rehab_address) ?$rehab_address : $rehab_city . ', ' . $rehab_state;
           $rehab_image_gallery = json_decode(get_post_meta( $post_id, 'rehab_image_gallery', true ));
           $first_image = is_iterable($rehab_image_gallery) && count($rehab_image_gallery)!=0 ? $rehab_image_gallery[0]->url : ADDIC_CLINIC_PLUGIN_URL.'assets/frontend/image/single-default.webp'; 
 
@@ -39,7 +41,7 @@ if(!function_exists('coltman_get_rehab_card')){
       $html .= '</div>';
       $html .= '<div class="rehab-info">';
       $html .= '<div class="rehab-card-title"><div class="top-info"><div class="info-city">';
-      $html .= '<address class="info-city-name">'.$rehab_city.', '.$rehab_state.'</address>
+      $html .= '<address class="info-city-name">'.$rehab_address.'</address>
               </div>
               <div class="rating-badget">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">

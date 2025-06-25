@@ -28,7 +28,7 @@ if(!function_exists('coltman_get_google_reviews_widget')){
         $url = "https://maps.googleapis.com/maps/api/place/details/json";
         $params =[
             'placeid' => $google_place_id,
-            'fields' => 'reviews,rating,user_ratings_total',
+            'fields' => 'reviews,rating,user_ratings_total,geometry,formatted_address',
             'language' => 'en',
             'key' => ADDIC_CLINIC_GOOGLE_API_KEY
         ];

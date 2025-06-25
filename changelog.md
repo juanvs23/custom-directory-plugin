@@ -9,6 +9,20 @@ y este proyecto se adhiere a [Semantic Versioning](https://semver.org/spec/v2.0.
 
 ### Agregado
 
+- Mejora desde cero del buscador
+
+### Arreglado
+
+- Arreglado el error de la taxonomía de los filtros que no se mostraban en el buscador.
+
+### Cambiado
+
+- Cambio de la sección de rehab address antes tomada la ciudad y el estado, pero ahora toma la dirección. 
+
+## [1.3.0] - 2025-06-12
+
+### Agregado
+
 - Bloques en los templates de los filtros
 1. Bloque imagen - texto
 2. Bloque acordeon
