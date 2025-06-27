@@ -410,6 +410,11 @@ document.addEventListener('DOMContentLoaded', function () {
                             })
                           
                         },300)
+                        console.log(document.querySelector('.load-more-rehab-container'));
+                        if(document.querySelector('.load-more-rehab-container').classList.contains('disable-load-more')){
+                            document.querySelector('.load-more-rehab-container').classList.remove('disable-load-more');
+                            document.querySelector('.pagination-container').style.opacity = '0';
+                        }
                         if( responseJson.data.endpage == true){
                             fadeOut(document.querySelector('.load-more-rehab'));
                          }else{
@@ -865,10 +870,10 @@ if(ajaxSeekers){
                         
                     })
                     const resultData = await response.json();
+              
                     setTimeout(() => {
                         addic_ajax_formLoader.classList.remove('active');
                     },300)
-
                     //console.log(resultData);
                     result.innerHTML = resultData.data;
                     //console.log(resultData.data);

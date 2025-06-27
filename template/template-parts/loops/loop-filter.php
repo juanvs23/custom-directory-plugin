@@ -78,7 +78,7 @@ $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
           
           
 
-            <div class="load-more-rehab-container">
+            <div class="load-more-rehab-container disable-load-more">
                 <button class="load-more-rehab" 
                     data-offset="<?php echo  get_option('posts_per_page') ?>" 
                     data-addcards="<?php echo  get_option('posts_per_page') ?>"  
@@ -90,6 +90,16 @@ $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
                     <span>Load More</span>
                 </button>
             </div>
+            <?php
+            // Pagination
+            $paginateQuery = new WP_Query($args);
+            echo addic_clinic_directory_paginator([
+                'query'=> $paginateQuery,
+                'current_page' => $paged,
+                'total_pages' => $paginateQuery->max_num_pages
+            ]);
+            wp_reset_postdata();
+            ?>
           
         </div>
     </main>

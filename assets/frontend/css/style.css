@@ -2036,7 +2036,76 @@ padding-top : 10px;
 #main-home div.addic_ajax_filter .form_content{
     padding: 5px;
 }
-    
+/*paginator*/
+section.pagination-container {
+    position: relative;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+nav.pagination {
+    display: flex;
+    width: 100%;
+    gap: 15px;
+    align-items: center;
+    justify-content: space-between;
+}
+ul.page-numbers {
+    list-style-type: none;
+    display: flex;
+    gap: 5px;
+    margin: 0;
+}
+.gotobutton .patinator-text{
+    display: none;
+}
+.gotobutton, .page-number a,.page-number span {
+    display: block;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #52776c;
+    color: #52776c;
+    transition: 0.3s;
+    border-radius: 3px;
+}
+.load-more-rehab-container{
+    transition: 0.3s;
+}
+.disable-load-more{
+    opacity: 0;
+}
+ .page-number.active a,.page-number.active span,
+.gotobutton:not(.disabled):hover, .page-number:hover a {
+   background: #52776c;
+    color: white;
+    border: 1px solid #52776c;
+}
+.gotobutton.disabled{
+    opacity: 0.5;
+    pointer-events: none;
+    cursor: default;
+}
+.gotobutton.disabled:hover{
+}
+@media (max-width: 380px) {
+    ul.page-numbers {
+        gap: 3px;
+        margin: 0;
+    }
+    nav.pagination {
+        gap: 9px;
+    }
+}
+@media(min-width: 768px){
+    .gotobutton, .page-number a,.page-number span{
+        height: 40px;
+        width: 40px;
+        font-size: 16px;
+    }
+}
+/*end paginator*/ 
 @media(min-width: 768px){
     article.insurance-item {
         width: 48%;

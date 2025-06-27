@@ -5,7 +5,7 @@
  * 
  * @package ColtmanAddicClinic
  * 
- * @version 1.4.0
+ * @version 1.5.0
  * @author Juan Carlos Avila
  * @link http://www.addicclinic.com
  * @copyright Copyright (c) 2024 Addic Clinic
@@ -16,7 +16,7 @@
  * Description: Addic Clinic Directory
  * Requires at least: 5.2
  * Requires PHP: 8.1
- * Version: 1.4.0
+ * Version: 1.5.0
  * Author: Juan Carlos Avila
  * Author URI: http://www.addicclinic.com
  * License: GPLv2 or later
@@ -37,7 +37,7 @@ set_time_limit(3000);
 
 if(!defined('ADDIC_CLINIC_PLUGIN_DIR')) define('ADDIC_CLINIC_PLUGIN_DIR', __DIR__);
 if(!defined('ADDIC_CLINIC_PLUGIN_URL')) define('ADDIC_CLINIC_PLUGIN_URL', plugin_dir_url(__FILE__));
-if(!defined('ADDIC_CLINIC_VERSION')) define('ADDIC_CLINIC_VERSION', '1.4.0'); 
+if(!defined('ADDIC_CLINIC_VERSION')) define('ADDIC_CLINIC_VERSION', '1.5.0'); 
 
 // Add templates folders
 $theme_folder = trailingslashit( get_stylesheet_directory() ).'addic-clinic-directory/';

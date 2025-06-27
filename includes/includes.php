@@ -10,3 +10,4 @@ require __DIR__ . '/taxonomies/taxonomies.php';
 require __DIR__ . '/term-metas/term-metas.php';
 require __DIR__ . '/shortcodes/shortcodes.php';
 require __DIR__ . '/admin-pages/admin-pages.php';
+require __DIR__ . '/hooks/hooks.php';

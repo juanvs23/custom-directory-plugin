@@ -5,7 +5,27 @@ Todos los cambios notables a este proyecto serán documentados en este archivo.
 El formato está basado en [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 y este proyecto se adhiere a [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.3.0] - 2025-06-12
+## [1.5.0] - 2025-06-25
+
+### Agregado
+
+- Agregado del paginador en las secciones de los filtros.
+
+- Agregado el json Schema para las paginas internas de los rehabs.
+
+- Agregado seccion de mapa a las taxonomias.
+
+- json Schema para las para las secciones de preguntas frecuentes en los rehabs y en las taxonomias.
+
+### Arreglado
+
+- 
+
+### Cambiado
+
+- El boton de load more esta oculto mientras no utilice los filtros.
+
+## [1.4.0] - 2025-06-25
 
 ### Agregado
 

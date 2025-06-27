@@ -11,4 +11,5 @@
     require __DIR__ . '/not_found_rehab.php';
     require __DIR__ . '/google-reviews.php';
     require __DIR__ . '/template_rating_badget.php';
+    require __DIR__ . '/paginatorLoop.php';
     

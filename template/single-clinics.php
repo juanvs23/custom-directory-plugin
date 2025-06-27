@@ -40,6 +40,9 @@ $first_image = is_iterable(json_decode($rehab_image_gallery)) && $rehab_image_ga
 $featured_image = get_the_post_thumbnail_url()?get_the_post_thumbnail_url():$first_image;
 //var_dump($rehab_image_gallery);
 $coltman_type_membership = get_the_terms( $post_id, 'coltman_type_membership' )[0]; // "free-membership" or "premium-membership"
+
+
+
 set_query_var('header_info', ['title' => $title, 'featured_image' => $featured_image]);
 echo coltman_get_template_slug_part('bannerpage'); //bannerpage.php
 
