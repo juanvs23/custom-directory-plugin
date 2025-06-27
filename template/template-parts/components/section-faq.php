@@ -6,6 +6,7 @@ $faq_list = get_query_var('faq_list');
 //var_dump($faq_list);
 $count = 0;
 if(is_iterable($faq_list) && count($faq_list) > 0):
+   $faq_items = [];
 ?>
 <div class="faq-container">
     <div class="faq-left">
@@ -14,11 +15,24 @@ if(is_iterable($faq_list) && count($faq_list) > 0):
     <div class="faq-right">
         <div class="faq-list">
 
-           <?php  foreach($faq_list as $faq): ?>
+           <?php  foreach($faq_list as $faq): 
+            $content =  str_replace('u00e0','',$faq->content);
+            $title = $faq->title;
+
+           $faq_items[] = [
+                "@type" => "Question",
+                "name" => wp_strip_all_tags($title),
+                "acceptedAnswer" => [
+                    "@type" => "Answer",
+                    "text" => wp_strip_all_tags($content)
+                ]
+            ];
+
+            ?>
            <div class="faq-item <?php echo $count == 0 ? 'open' : ''; ?>" id="<?php echo $faq->id; ?>">
                 <div class="faq-item-title">
                     <h3 class="title">
-                        <?php echo $faq->title; ?>
+                        <?php echo $title; ?>
                     </h3>
                     <div class="faq-arrow">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
@@ -34,7 +48,7 @@ if(is_iterable($faq_list) && count($faq_list) > 0):
                     </div>
                 </div>
                 <div class="faq-item-content">
-                    <?php echo str_replace('u00e0','',$faq->content); ?>
+                    <?php echo $content; ?>
                 </div>
             </div>
            <?php 
@@ -43,4 +57,12 @@ if(is_iterable($faq_list) && count($faq_list) > 0):
         </div>
     </div>
 </div>
+<?php
+$faq_schema = [
+            "@context" => "https://schema.org",
+            "@type" => "FAQPage",
+            "mainEntity" => $faq_items
+        ];
+ echo '<script type="application/ld+json">' . wp_json_encode($faq_schema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) . '</script>';
+?>
 <?php endif; ?>
