@@ -87,13 +87,21 @@ if (class_exists('ColtmanTermMeta') ) {
                         'type' => 'separator',
                         'id' => 'faq_separator',
                     ],
+
                      'faq_accordeon' => [
                         'label' => 'Frequently Asked Questions',
                         'type' => 'accordion',
                         'add_image' => 'false',
                         'default' => '',
                         'description' => 'Add frequently asked questions here: <br> Add <b>Question = title</b>, <b>Answer = content</b>'
-                    ]
+                     ],
+                     'google_map_iframe' =>[
+                        'label' => 'Google Map iframe url',
+                        'type' => 'textarea',
+                        'id' => 'google_map_iframe',
+                          'default' => '',
+                        'description' => 'Add Google Map iframe code here'
+                     ]
                 ]
                 ];
             new ColtmanTermMeta($config);

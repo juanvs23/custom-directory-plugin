@@ -346,6 +346,7 @@ padding: 30px 0 30px 0;
 .rehab-card-gallery {
     max-height: 330px;
 }
+h2.map-location-title,
 .content-block-ama-title h2{
     font-size: 30px;
     color: rgba(var(--primary-green-color), 1);
@@ -2089,6 +2090,44 @@ ul.page-numbers {
 }
 .gotobutton.disabled:hover{
 }
+.map-section {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+.map-container {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 25px;
+    align-items: stretch;
+}
+.map-location-right {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 23px;
+    justify-content:center;
+}
+.map-location-left iframe {
+    border-radius: 8px;
+}
+div#map-location-list {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    justify-content: space-between;
+    gap: 13px;
+}
+a.map-location-item {
+    transition: 0.3s;
+}
+a.map-location-item:hover {
+    text-decoration:underline;
+    color: rgba(var(--primary-green-color),1);
+}
+    .map-location-left iframe {
+        border-radius: 8px;
+       
+    }
+ 
 @media (max-width: 380px) {
     ul.page-numbers {
         gap: 3px;
@@ -2103,6 +2142,17 @@ ul.page-numbers {
         height: 40px;
         width: 40px;
         font-size: 16px;
+    }
+    .map-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    align-items: stretch;
+    }
+    div#map-location-list {
+   
+    grid-template-columns: repeat(3,1fr);
+    
     }
 }
 /*end paginator*/ 
@@ -2292,8 +2342,11 @@ ul.page-numbers {
     article.memeber-item p.member-position {
         font-size: 14px;
     }
- 
-    
+   
+   
+    .map-container {
+        gap: 25px; 
+    }
     .clinic-posts {
         display: grid;
         grid-template-columns: repeat(3,1fr);
@@ -2322,5 +2375,17 @@ ul.page-numbers {
     ul.addic_filter_tab_list {
         display: grid;
         grid-template-columns: repeat(4,1fr);
+    }
+    .map-location-right{
+        gap: 8%;
+    }
+    .map-location-left iframe {
+        border-radius: 8px;
+        max-height: 350px;
+    }
+     div#map-location-list {
+   
+        grid-template-columns: repeat(4,1fr);
+    
     }
 }

@@ -18,9 +18,14 @@ $middle_taps = get_term_meta($post->term_id, 'middle_taps', true);
 $middle_taps = isset($middle_taps) && !empty($middle_taps) && $middle_taps !== '[]' && $middle_taps !== ''  ? $middle_taps : '';
 $top_image_text = get_term_meta($post->term_id, 'top_image_text', true);
 $top_image_text = isset($top_image_text) && !empty($top_image_text) && $top_image_text !== '[]' && $top_image_text !== ''  ? $top_image_text : '';
+$google_map_iframe = get_term_meta($post->term_id, 'google_map_iframe', true);
+
+
 $bottom_blocks_image = get_term_meta($post->term_id, 'bottom_image_text', true);
 $bottom_blocks_image = isset($bottom_blocks_image) && !empty($bottom_blocks_image) && $bottom_blocks_image !== '[]' && $bottom_blocks_image !== ''  ? $bottom_blocks_image : '';
 $featured_image = $tem_image!=''?$tem_image: ADDIC_CLINIC_PLUGIN_URL.'assets/frontend/image/category-default.webp';
+
+
 set_query_var('header_info', ['title' => $title, 'featured_image' => $featured_image]);
 echo coltman_get_template_slug_part('bannerpage'); //bannerpage.php
 
@@ -154,10 +159,22 @@ echo coltman_get_template_slug_part('components/section','faq');
     </div>
 </section>
 
+
 <?php endif;
 echo '<div class="ads-container-carousel">';
 echo coltman_get_template_slug_part('components/ads','carousel');
 echo '</div>';
+
+
+if(isset($google_map_iframe) && !empty($google_map_iframe)){
+    //var_dump(get_queried_object()->name);
+    $top_locations = getTopLocations(get_queried_object()->name);
+    $title = "Popular LA treatment locations";
+    
+    set_query_var('map_location',['top_locations'=>$top_locations,'title'=>$title,'google_map_iframe'=>$google_map_iframe]);
+    echo coltman_get_template_slug_part('components/map','indicator');
+}
+
 
 echo coltman_get_template_slug_part('loops/related','posts'); 
 echo '<section class="clinic-section">';

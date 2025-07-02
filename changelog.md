@@ -13,7 +13,7 @@ y este proyecto se adhiere a [Semantic Versioning](https://semver.org/spec/v2.0.
 
 - Agregado el json Schema para las paginas internas de los rehabs.
 
-- Agregado seccion de mapa a las taxonomias.
+- Agregado seccion de mapa a las taxonomias locations.
 
 - json Schema para las para las secciones de preguntas frecuentes en los rehabs y en las taxonomias.
 
